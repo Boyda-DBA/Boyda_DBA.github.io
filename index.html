@@ -16,28 +16,27 @@
    <script>
    <script>
 		document.addEventListener('DOMContentLoaded', function () {
-			// Make the first header active on page load
-			const firstHeader = document.querySelector('h2');
-			firstHeader.classList.add('active');
-
 			const headers = document.querySelectorAll('h2');
-			headers.forEach(header => {
+			headers.forEach(function(header) {
 				header.addEventListener('click', function () {
-					// Deactivate all headers
+					// Remove 'active' class from all headers except the clicked one
 					headers.forEach(h => {
-						h.classList.remove('active');
+						if (h !== this) {
+							h.classList.remove('active');
+							h.nextElementSibling.classList.add('collapse');
+						}
 					});
-					// Activate the clicked header
-					this.classList.add('active');
-					// Toggle collapse on the next sibling element
+					// Toggle 'active' class and collapsing for the clicked header
+					this.classList.toggle('active');
 					this.nextElementSibling.classList.toggle('collapse');
-					// Scroll into view if active
+					// Scroll the active header into view
 					if (this.classList.contains('active')) {
 						this.scrollIntoView({ behavior: 'smooth', block: 'center' });
 					}
 				});
 			});
 		});
+
 	</script>
     </script>
 <script src="index_files/page-script.js" id="bw-fido2-page-script"></script></head>
