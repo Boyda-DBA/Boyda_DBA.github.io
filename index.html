@@ -7,45 +7,53 @@
     <title>Data Engineer Portfolio</title>
     <style>
         .collapse { display: none; }
-        h2 { cursor: pointer; }
-        h2::before { content: '> '; }
-        h2.active::before { content: '\25B6 '; }
+		h2 { cursor: pointer; }
+		h2::before { content: '> '; display: none; }
+		h2:hover::before, h2.active::before { display: inline; }
+		h2.active::before { content: '\25B6 '; }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const headers = document.querySelectorAll('h2');
-            headers.forEach(header => {
-                header.addEventListener('click', function () {
-                    document.querySelectorAll('h2').forEach(h => {
-                        if (h !== this) {
-                            h.classList.remove('active');
-                            h.nextElementSibling.classList.add('collapse');
-                        }
-                    });
-                    this.classList.toggle('active');
-                    this.nextElementSibling.classList.toggle('collapse');
-                    if (this.classList.contains('active')) {
-                        this.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-                }.bind(header));
-            });
+    // Initialize the welcome header as active
+    const welcomeHeader = document.querySelector('#introduction h2');
+    welcomeHeader.classList.add('active');
+    welcomeHeader.nextElementSibling.style.display = '';
 
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const id = this.getAttribute('href').substring(1);
-                    const section = document.getElementById(id);
-                    const header = section.querySelector('h2');
-                    document.querySelectorAll('h2').forEach(h => {
-                        h.classList.remove('active');
-                        h.nextElementSibling.classList.add('collapse');
-                    });
-                    header.classList.add('active');
-                    section.querySelector('div').classList.remove('collapse');
-                    header.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                });
-            });
+    // Event listeners for all headers except the welcome header
+    const headers = document.querySelectorAll('h2:not(#introduction h2)');
+    headers.forEach(header => {
+        header.addEventListener('mouseenter', function () {
+            this.classList.add('active');
         });
+        header.addEventListener('mouseleave', function () {
+            this.classList.remove('active');
+        });
+        header.addEventListener('click', function () {
+            this.classList.toggle('active');
+            this.nextElementSibling.classList.toggle('collapse');
+            if (this.classList.contains('active')) {
+                this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+    });
+
+    // Add click event for navigation links to open sections
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const id = this.getAttribute('href').substring(1);
+            const section = document.getElementById(id);
+            const header = section.querySelector('h2');
+            headers.forEach(h => {
+                h.classList.remove('active');
+                h.nextElementSibling.classList.add('collapse');
+            });
+            header.classList.add('active');
+            section.querySelector('div').classList.remove('collapse');
+            header.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			});
+		});
+	});
     </script>
 <script src="index_files/page-script.js" id="bw-fido2-page-script"></script></head>
 <body data-new-gr-c-s-check-loaded="8.910.0" data-gr-ext-installed="">
