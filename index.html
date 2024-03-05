@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="index_files/pico.min.css">
+    <title>Data Engineer Portfolio</title>
+    <style>
+        .collapse { display: none; }
+        h2 { cursor: pointer; }
+        h2::before { content: '> '; }
+        h2.active::before { content: '\25B6 '; }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const headers = document.querySelectorAll('h2');
+            headers.forEach(header => {
+                header.addEventListener('click', function () {
+                    document.querySelectorAll('h2').forEach(h => {
+                        if (h !== this) {
+                            h.classList.remove('active');
+                            h.nextElementSibling.classList.add('collapse');
+                        }
+                    });
+                    this.classList.toggle('active');
+                    this.nextElementSibling.classList.toggle('collapse');
+                    if (this.classList.contains('active')) {
+                        this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }.bind(header));
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const id = this.getAttribute('href').substring(1);
+                    const section = document.getElementById(id);
+                    const header = section.querySelector('h2');
+                    document.querySelectorAll('h2').forEach(h => {
+                        h.classList.remove('active');
+                        h.nextElementSibling.classList.add('collapse');
+                    });
+                    header.classList.add('active');
+                    section.querySelector('div').classList.remove('collapse');
+                    header.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+            });
+        });
+    </script>
+<script src="index_files/page-script.js" id="bw-fido2-page-script"></script></head>
+<body data-new-gr-c-s-check-loaded="8.910.0" data-gr-ext-installed="">
+    <nav class="container-fluid">
+        <ul>
+            <li><strong>Data Engineer Portfolio</strong></li>
+        </ul>
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#cover-letter">Cover Letter</a></li>
+            <li><a href="#supporting-documents">Supporting Documents</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <section id="introduction">
+            <h2 class="">Welcome</h2>
+            <div class="collapse">This is the beginning of my 
+professional journey as a Data Engineer. Here, you'll find information 
+about my skills, projects, and the values I bring to potential 
+employers.</div>
+        </section>
+        <section id="resume">
+            <h2 class="">Resume</h2>
+            <div class="collapse">
+                <p><strong>Alex Boyd - Junior Database Engineer</strong><br>
+                <strong>Location:</strong> Halifax NS<br>
+                <strong>Contact:</strong> 7822345793 | alboyd14@gmail.com<br>
+                <strong>Summary:</strong> Aspiring Data Engineer 
+currently pursuing a Database Administration certification at NSCC. 
+Passionate about leveraging skills in data analysis, programming, and 
+technology to deliver innovative client solutions.<br>
+                <strong>Skills:</strong> Transactional SQL, Microsoft SQL Server, Query Performance Optimization, MySQL, Python, Linux Scripting<br>
+                <strong>Interests:</strong> Home Lab, Containerization, Data Visualization, Photography, Powerlifting<br>
+                <strong>Certifications:</strong> SQL (Intermediate) - HackerRank, Jan 2024<br>
+                <strong>Experience:</strong></p><ul>
+                    <li>Project Blackbird - Database Administrator, 
+Halifax NS (May - Jun 2023): Collaborated with a development team to 
+create a browser-based game, refactored the database, performed 
+performance tuning.</li>
+                    <li>Steele Auto Group - Senior Service 
+Advisor/Videographer, Halifax NS (May 2022 - Sep 2022): Documented 
+vehicle problems, enhanced customer satisfaction, collaborated closely 
+with technicians.</li>
+                </ul>
+                <strong>Education:</strong> NSCC, Database 
+Administration, Database Architecture and Design, ETL Processes, 
+Transactional Database Programming, Linux Server Administration &amp; 
+Scripting (Sep 2022 - Jun 2024)<br>
+                <strong>Projects:</strong><ul>
+                    <li>National MS Society Analysis: Analyzed donation 
+data for the National MS Society, built a Data Visualization dashboard 
+in Tableau.</li>
+                    <li>US Consumer Finance Complaints Analysis: 
+Analyzed consumer complaints of US financial products, cleaned data 
+using Numpy and Pandas, informed shareholder decisions.</li>
+                </ul>
+                <p></p>
+            </div>
+        </section>
+        <section id="projects">
+            <h2>Project Samples</h2>
+            <div class="collapse">
+                <p>Below are some projects I've worked on that 
+demonstrate my capabilities as a Data Engineer. Each project showcases a
+ specific skill set and how I applied it to solve real-world problems.</p>
+                <figure>
+                    <img src="index_files/photo-1581092334247-44dd684e3c82.jpg" alt="Project Sample">
+                    <figcaption><a href="#" target="_blank">View Project 1</a></figcaption>
+                </figure>
+                <p>More project samples can be added as needed.</p>
+            </div>
+        </section>
+        <section id="cover-letter">
+            <h2>Cover Letter</h2>
+            <div class="collapse">
+                <p>This section contains my cover letter, where I 
+elaborate on my experiences, the challenges I've overcome, and why I'm a
+ good fit for the roles I'm applying for. <a href="#" target="_blank">Read my cover letter</a>.</p>
+            </div>
+        </section>
+        <section id="supporting-documents">
+            <h2>Supporting Documents</h2>
+            <div class="collapse">
+                <p>Here, you can find additional documents that support 
+my application, such as certifications, letters of recommendation, and 
+any other relevant information. <a href="#" target="_blank">View documents</a>.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="container">
+    </footer>
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
