@@ -1,138 +1,175 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="index_files/pico.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Engineer Portfolio</title>
-    <style>
-        <style>
-			.collapse { display: none; }
-			h2 { cursor: pointer; position: relative; padding-right: 20px; }
-			h2::after { content: ">"; position: absolute; right: 0; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
-			h2:not(.active):hover::after { opacity: 1; }
-			.resume-section h3 {
-				font-weight: bold;
-				margin-bottom: 0.5em;
-			}
-			.resume-section h4 {
-				font-weight: bold;
-				color: #333;
-				margin-top: 1em;
-			}
-			.resume-section p, .resume-section ul {
-				margin-left: 20px;
-			}
-			.personal-info p, .skills ul li {
-				font-size: 0.9em;
-				line-height: 1.6;
-			}
-			.skills ul {
-				list-style-type: circle;
-			}
-		</style>
-    </style>
-   <script>
-   <script>
-		document.addEventListener('DOMContentLoaded', function () {
-			// Initially hide all sections except 'Welcome'
-			document.querySelectorAll('.section').forEach(function(section) {
-				if (!section.classList.contains('welcome')) {
-					section.classList.add('collapse');
-				}
-			});
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="text-gray-700 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <span class="ml-3 text-xl">Your Name</span>
+            </a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <a href="#about" class="mr-5 hover:text-gray-900">About</a>
+                <a href="#projects" class="mr-5 hover:text-gray-900">Projects</a>
+                <a href="#skills" class="mr-5 hover:text-gray-900">Skills</a>
+                <a href="#experience" class="mr-5 hover:text-gray-900">Experience</a>
+                <a href="#contact" class="mr-5 hover:text-gray-900">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-			// Add click event listener to all headers
-			document.querySelectorAll('h2').forEach(function(header) {
-				header.addEventListener('click', function() {
-					// Collapse all sections except the one clicked and the 'Welcome' section
-					document.querySelectorAll('.section').forEach(function(section) {
-						if (section.id !== 'welcome' && section !== header.nextElementSibling) {
-							section.classList.add('collapse');
-						}
-					});
-					// Toggle the clicked section
-					header.nextElementSibling.classList.toggle('collapse');
-				});
-			});
-		});
-	</script>
-    </script>
-<script src="index_files/page-script.js" id="bw-fido2-page-script"></script></head>
-<body data-new-gr-c-s-check-loaded="8.910.0" data-gr-ext-installed="">
-    <nav class="container-fluid">
-        <ul>
-            <li><strong>Data Engineer Portfolio</strong></li>
-        </ul>
-        <ul>
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#resume">Resume</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#cover-letter">Cover Letter</a></li>
-            <li><a href="#supporting-documents">Supporting Documents</a></li>
-        </ul>
-    </nav>
-    <main class="container">
-        <section id="introduction">
-            <h2 class="active">Welcome</h2>
-            <div>This is the beginning of my professional journey as a 
-Data Engineer. Here, you'll find information about my skills, projects, 
-and the values I bring to potential employers.</div>
-        </section>
-        <section id="resume">
-			<h2>Resume</h2>
-			<div class="resume-section">
-				<div class="personal-info">
-					<h3>Alex Boyd - Junior Database Engineer</h3>
-					<p><strong>Location:</strong> Halifax NS</p>
-					<p><strong>Contact:</strong> 7822345793 | alboyd14@gmail.com</p>
-				</div>
-				<div class="summary">
-					<h4>Summary</h4>
-					<p>Aspiring Data Engineer with a focus on database administration. Passionate about data analysis, programming, and technology.</p>
-				</div>
-				<div class="skills">
-					<h4>Skills</h4>
-					<ul>
-						<li>Transactional SQL</li>
-						<li>Microsoft SQL Server</li>
-						<!-- Add more skills as list items -->
-					</ul>
-				</div>
-				<!-- Add more sections for Interests, Certifications, Experience, Education, Projects as above -->
-			</div>
-		</section>
-        <section id="projects">
-            <h2>Project Samples</h2>
-            <div class="collapse">
-                <p>Below are some projects I've worked on that 
-demonstrate my capabilities as a Data Engineer. Each project showcases a
- specific skill set and how I applied it to solve real-world problems.</p>
-                <figure>
-                    <img src="index_files/photo-1583912086215-bef63f5b346e.jpg" alt="Project Sample">
-                    <figcaption><a href="#" target="_blank">View Project 1</a></figcaption>
-                </figure>
-                <p>More project samples can be added as needed.</p>
+    <section id="about" class="text-gray-600 body-font">
+        <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+            <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Hello, I'm Your Name. <br class="hidden lg:inline-block">I'm a passionate Data Engineer.</h1>
+                <p class="mb-8 leading-relaxed">Briefly describe your background, what you love about data engineering, and any key achievements or projects. This is your chance to make a personal connection with the reader, showcasing your passion and expertise.</p>
+                <div class="flex justify-center">
+                    <a href="#contact" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Get In Touch</a>
+                </div>
             </div>
-        </section>
-        <section id="cover-letter">
-            <h2>Cover Letter</h2>
-            <div class="collapse">
-                <p>This section contains my cover letter, where I 
-elaborate on my experiences, the challenges I've overcome, and why I'm a
- good fit for the roles I'm applying for. <a href="#" target="_blank">Read my cover letter</a>.</p>
+            <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+                <img class="object-cover object-center rounded" alt="Your Professional Photo" src="https://placekitten.com/720/600">
             </div>
-        </section>
-        <section id="supporting-documents">
-            <h2>Supporting Documents</h2>
-            <div class="collapse">
-                <p>Here, you can find additional documents that support 
-my application, such as certifications, letters of recommendation, and 
-any other relevant information. <a href="#" target="_blank">View documents</a>.</p>
+        </div>
+    </section>
+
+    <section id="projects" class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-wrap w-full mb-20">
+                <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+                    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Projects</h1>
+                    <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+                </div>
+                <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">Briefly introduce your projects section, highlighting your focus areas and what you wish to showcase through these projects.</p>
             </div>
-        </section>
-    </main>
-    <footer class="container">
+            <div class="flex flex-wrap -m-4">
+                <!-- Project 1 -->
+                <div class="p-4 md:w-1/2">
+                    <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
+                        <div class="flex items-center mb-3">
+                            <h2 class="text-gray-900 text-lg title-font font-medium">Project Title 1</h2>
+                        </div>
+                        <div class="flex-grow">
+                            <p class="leading-relaxed text-base">Brief description of the project, the problem it solves, and the technologies used.</p>
+                            <a href="#your-link" class="mt-3 text-indigo-500 inline-flex items-center">Learn More
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more projects as needed -->
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="text-gray-600 body-font bg-gray-50">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="text-center mb-20">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">Technical Skills</h1>
+                <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">Graphical representation of skills highlights proficiency in key areas essential for a data engineer.</p>
+            </div>
+            <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+                <div class="p-2 sm:w-1/2 w-full">
+                    <div class="bg-white rounded flex p-4 h-full items-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="SQL" class="w-6 h-6 mr-4">
+                        <span class="title-font font-medium">SQL</span>
+                    </div>
+                </div>
+                <!-- Repeat for other skills -->
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="text-gray-600 body-font bg-white">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="text-center mb-20">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">Work Experience</h1>
+                <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">The journey through my roles as a Data Engineer, highlighting projects, responsibilities, and achievements.</p>
+            </div>
+            <div class="flex flex-wrap m-4">
+                <!-- Experience Entry 1 -->
+                <div class="p-4 md:w-1/2 w-full">
+                    <div class="h-full bg-gray-100 p-8 rounded">
+                        <span class="inline-block py-1 text-sm font-semibold text-indigo-500 mb-2">June 2020 - Present</span>
+                        <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Senior Data Engineer at XYZ Corporation</h2>
+                        <p class="leading-relaxed mb-5">Describe your role, responsibilities, and any significant projects or achievements. Highlight any technologies or methodologies you introduced or excelled in.</p>
+                        <a class="inline-flex items-center">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 mr-2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>Learn More
+                        </a>
+                    </div>
+                </div>
+                <!-- Add more experiences as needed -->
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="text-gray-600 body-font relative">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-col text-center w-full mb-12">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Me</h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">If you have any questions, job offers, or projects in mind, don't hesitate to reach out. I'll get back to you as soon as possible.</p>
+            </div>
+            <div class="lg:w-1/2 md:w-2/3 mx-auto">
+                <form action="your-server-endpoint" method="POST" class="flex flex-wrap -m-2">
+                    <div class="p-2 w-1/2">
+                        <div class="relative">
+                            <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
+                            <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+                    </div>
+                    <div class="p-2 w-1/2">
+                        <div class="relative">
+                            <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+                            <input type="email" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+                    </div>
+                    <div class="p-2 w-full">
+                        <div class="relative">
+                            <label for="message" class="leading-7 text-sm text-gray-600">Message</label>
+                            <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                        </div>
+                    </div>
+                    <div class="p-2 w-full">
+                        <button type="submit" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-gray-600 body-font">
+        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+            <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                <span class="ml-3 text-xl">Your Name</span>
+            </a>
+            <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2024 Your Name —
+                <a href="https://twitter.com/yourhandle" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@yourhandle</a>
+            </p>
+            <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+                <a class="text-gray-500">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <!-- Icons for social media (optional) -->
+                    </svg>
+                </a>
+            </span>
+        </div>
     </footer>
 
-</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
+    <script>
+      document.querySelectorAll('header a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+      });
+    </script>
+</body>
+</html>
