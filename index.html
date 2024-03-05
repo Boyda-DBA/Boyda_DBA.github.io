@@ -6,25 +6,39 @@
     <link rel="stylesheet" href="index_files/pico.min.css">
     <title>Data Engineer Portfolio</title>
     <style>
-        .collapse { display: none; }
-		h2 { cursor: pointer; position: relative; padding-right: 20px; }
-		h2::after { content: ">"; position: absolute; right: 0; opacity: 0; transition: opacity 0.3s; }
-		h2:hover::after, h2:not(.active):hover::after { opacity: 1; }
+        <style>
+			.collapse { display: none; }
+			h2 { cursor: pointer; position: relative; padding-right: 20px; }
+			h2::after { content: ">"; position: absolute; right: 0; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+			h2:not(.active):hover::after { opacity: 1; }
+		</style>
     </style>
-    <script>
-       document.addEventListener('DOMContentLoaded', function () {
-    // Your existing JavaScript code to set up headers
+   <script>
+   <script>
+		document.addEventListener('DOMContentLoaded', function () {
+			// Make the first header active on page load
+			const firstHeader = document.querySelector('h2');
+			firstHeader.classList.add('active');
 
-    // Add this to handle mouseover for all h2 elements
-    document.querySelectorAll('h2').forEach(header => {
-        header.addEventListener('mouseenter', function () {
-            this.classList.add('hover');
-        });
-        header.addEventListener('mouseleave', function () {
-            this.classList.remove('hover');
-        });
-    });
-});
+			const headers = document.querySelectorAll('h2');
+			headers.forEach(header => {
+				header.addEventListener('click', function () {
+					// Deactivate all headers
+					headers.forEach(h => {
+						h.classList.remove('active');
+					});
+					// Activate the clicked header
+					this.classList.add('active');
+					// Toggle collapse on the next sibling element
+					this.nextElementSibling.classList.toggle('collapse');
+					// Scroll into view if active
+					if (this.classList.contains('active')) {
+						this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+					}
+				});
+			});
+		});
+	</script>
     </script>
 <script src="index_files/page-script.js" id="bw-fido2-page-script"></script></head>
 <body data-new-gr-c-s-check-loaded="8.910.0" data-gr-ext-installed="">
