@@ -16,27 +16,27 @@
    <script>
    <script>
 		document.addEventListener('DOMContentLoaded', function () {
-			const headers = document.querySelectorAll('h2');
-			headers.forEach(function(header) {
-				header.addEventListener('click', function () {
-					// Remove 'active' class from all headers except the clicked one
-					headers.forEach(h => {
-						if (h !== this) {
-							h.classList.remove('active');
-							h.nextElementSibling.classList.add('collapse');
+			// Initially hide all sections except 'Welcome'
+			document.querySelectorAll('.section').forEach(function(section) {
+				if (!section.classList.contains('welcome')) {
+					section.classList.add('collapse');
+				}
+			});
+
+			// Add click event listener to all headers
+			document.querySelectorAll('h2').forEach(function(header) {
+				header.addEventListener('click', function() {
+					// Collapse all sections except the one clicked and the 'Welcome' section
+					document.querySelectorAll('.section').forEach(function(section) {
+						if (section.id !== 'welcome' && section !== header.nextElementSibling) {
+							section.classList.add('collapse');
 						}
 					});
-					// Toggle 'active' class and collapsing for the clicked header
-					this.classList.toggle('active');
-					this.nextElementSibling.classList.toggle('collapse');
-					// Scroll the active header into view
-					if (this.classList.contains('active')) {
-						this.scrollIntoView({ behavior: 'smooth', block: 'center' });
-					}
+					// Toggle the clicked section
+					header.nextElementSibling.classList.toggle('collapse');
 				});
 			});
 		});
-
 	</script>
     </script>
 <script src="index_files/page-script.js" id="bw-fido2-page-script"></script></head>
