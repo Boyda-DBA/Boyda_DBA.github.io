@@ -7,53 +7,24 @@
     <title>Data Engineer Portfolio</title>
     <style>
         .collapse { display: none; }
-		h2 { cursor: pointer; }
-		h2::before { content: '> '; display: none; }
-		h2:hover::before, h2.active::before { display: inline; }
-		h2.active::before { content: '\25B6 '; }
+		h2 { cursor: pointer; position: relative; padding-right: 20px; }
+		h2::after { content: ">"; position: absolute; right: 0; opacity: 0; transition: opacity 0.3s; }
+		h2:hover::after, h2:not(.active):hover::after { opacity: 1; }
     </style>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-    // Initialize the welcome header as active
-    const welcomeHeader = document.querySelector('#introduction h2');
-    welcomeHeader.classList.add('active');
-    welcomeHeader.nextElementSibling.style.display = '';
+       document.addEventListener('DOMContentLoaded', function () {
+    // Your existing JavaScript code to set up headers
 
-    // Event listeners for all headers except the welcome header
-    const headers = document.querySelectorAll('h2:not(#introduction h2)');
-    headers.forEach(header => {
+    // Add this to handle mouseover for all h2 elements
+    document.querySelectorAll('h2').forEach(header => {
         header.addEventListener('mouseenter', function () {
-            this.classList.add('active');
+            this.classList.add('hover');
         });
         header.addEventListener('mouseleave', function () {
-            this.classList.remove('active');
-        });
-        header.addEventListener('click', function () {
-            this.classList.toggle('active');
-            this.nextElementSibling.classList.toggle('collapse');
-            if (this.classList.contains('active')) {
-                this.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+            this.classList.remove('hover');
         });
     });
-
-    // Add click event for navigation links to open sections
-    document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const id = this.getAttribute('href').substring(1);
-            const section = document.getElementById(id);
-            const header = section.querySelector('h2');
-            headers.forEach(h => {
-                h.classList.remove('active');
-                h.nextElementSibling.classList.add('collapse');
-            });
-            header.classList.add('active');
-            section.querySelector('div').classList.remove('collapse');
-            header.scrollIntoView({ behavior: 'smooth', block: 'center' });
-			});
-		});
-	});
+});
     </script>
 <script src="index_files/page-script.js" id="bw-fido2-page-script"></script></head>
 <body data-new-gr-c-s-check-loaded="8.910.0" data-gr-ext-installed="">
