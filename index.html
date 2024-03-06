@@ -192,24 +192,21 @@ consumer complaints of US finacial products. Demonstrated data cleaning and anal
                 <p class="lg:w-2/3 mx-auto leading-relaxed text-base">If you have any questions, job offers, or projects in mind, don't hesitate to reach out. I'll get back to you as soon as possible.</p>
             </div>
             <div class="lg:w-1/2 md:w-2/3 mx-auto">
-                <form
-                action="https://formspree.io/f/mgegzvng"
-                method="POST"
-                >
-                <label>
-                    Your Name:
-                    <input type="name" name="name">
-                </label>
-                <label>
-                    Your email:
-                    <input type="email" name="email">
-                </label>
-                <label>
-                    Your message:
-                    <textarea name="message"></textarea>
-                </label>
-                <!-- your other form fields go here -->
-                <button type="submit">Send</button>
+                <form action="https://formspree.io/f/mgegzvng" method="POST">
+                    <label class="block mb-4">
+                        <span class="text-gray-400">Your Name:</span>
+                        <input type="name" name="name" class="w-full px-4 py-2 mt-2 rounded-md bg-gray-100 text-gray-900">
+                    </label>
+                    <label class="block mb-4">
+                        <span class="text-gray-400">Your Email:</span>
+                        <input type="email" name="email" class="w-full px-4 py-2 mt-2 rounded-md bg-gray-100 text-gray-900">
+                    </label>
+                    <label class="block mb-4">
+                        <span class="text-gray-400">Your Message:</span>
+                        <textarea name="message" class="w-full px-4 py-2 mt-2 rounded-md bg-gray-100 text-gray-900"></textarea>
+                    </label>
+                    <!-- your other form fields go here -->
+                    <button type="submit" class="px-4 py-2 mt-4 text-white bg-indigo-500 rounded-md hover:bg-indigo-600">Send</button>
                 </form>
             </div>
         </div>
