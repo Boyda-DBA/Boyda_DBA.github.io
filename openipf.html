@@ -36,6 +36,25 @@
             </p>
             <h2 class="text-2xl font-bold text-indigo-500 mb-5">Queries And Tuning</h2>
             <p class="mb-3" style="color: #f4f2ef;">After transforming the data into the chosen structure and loading it into a Postgres database, several queries were built for this dataset to display its complexity and explore views and performance tuning.</p>
+            <img src="photos/openipf-query1.png" alt="">
+            <br>
+            <p class="mb-3" style="color: #f4f2ef;">
+            This query displays the top ten lifters in the world for the present year by dots score which is a formula that is used to compare competitors between divisions.
+            </p>
+            <br>
+            <img src="photos/openipf-query2.png" alt="">
+            <br>
+            <p class="mb-3" style="color: #f4f2ef;">
+            Utilizing a very large query with several CTEs that join tables my partner Jon and I were able to query some interesting data while also displaying a very costly query.
+            This is the performance of the query before tuning.
+            </p>
+            <br>
+            <img src="photos/openipf-query3.png" alt="">
+            <br>
+            <p class="mb-3" style="color: #f4f2ef;">
+            And this is the explain analyze results after the query was tuned with indexes.
+            </p>
+            <br>
 
         </div>
     </section>
@@ -43,23 +62,16 @@
         <div class="container mx-auto">
             <h2 style="color: #f4f2ef;" class="text-3xl font-bold text-indigo-500 mb-3">Results</h2>
             <div class="h-1 w-20 bg-indigo-500 rounded mb-6"></div> <!-- Header underline -->
-            <p style="color: #f4f2ef;">Using the above structure I was able to load the data into a Postgres database and create queries to show the data.</p>
+            <p class="mb-3" style="color: #f4f2ef;">
+            Finally some visualizations were made using Matplotlib and Seaborn python libraries.
+            </p>
             <br>
-            <img src="photos/Screenshot_20240408_132038.png" alt="">
+            <img src="photos/openipf-visualization.png" alt="">
             <br>
-            <p style="color: #f4f2ef;">This query shows the top ten companies with the most complaints in the dataset.</p>
-            <br>
-            <img src="photos/Screenshot_20240408_132322.png" alt="">
-            <br>
-            <p style="color: #f4f2ef;">This complaint shows the number of complaints filed in 2011</p>
-            <br>
-            <img src="photos/Screenshot_20240408_132823.png" alt="">
-            <br>
-            <p style="color: #f4f2ef;">This query shows the number of complaints per zipcode in the area of Manhattan. This query was used as an example of performance tuning with indexes.</p>
-            <br>
-            <img src="photos/Screenshot_20240408_132840.png" alt="">
-            <br>
-            <p style="color: #f4f2ef;">Looking at the query plan we can see that the additions of indexes for this query have reduced the execution time from 84.523ms to 5.934ms!</p>
+            <p class="mb-3" style="color: #f4f2ef;">
+            These visualizations show the distrobution of totals acheived by all raw male and female athletes in the current IPF divisions.
+            </p>
+
             <a href="https://boyda-dba.github.io/Boyda_DBA.github.io/" class="inline-block mt-5 text-indigo-500 hover:text-indigo-600">← Back to Portfolio</a>
         </div>
     </section>
