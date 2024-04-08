@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Name - Alex Boyd's Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-gray-200">
+    <section class="px-5 py-10 bg-gray-800">
+        <div class="container mx-auto">
+            <h1 style="color: #f4f2ef;" class="text-4xl font-bold text-indigo-500 mb-4">Open IPF Powerliftng Database</h1>
+            <div class="h-1 w-20 bg-indigo-500 rounded mb-6"></div> <!-- Header underline -->
+            <p class="mb-4" style="color: #f4f2ef;">An ETL Project using the Open IPF dataset from Open Powerlifting.</p>
+        </div>
+    </section>
+    <section class="px-5 py-10 text-gray-400 bg-gray-900">
+        <div class="container mx-auto">
+            <h2 style="color: #f4f2ef;" class="text-3xl font-bold text-indigo-500 mb-3">The Process</h2>
+            <div class="h-1 w-20 bg-indigo-500 rounded mb-6"></div> <!-- Header underline -->
+            <p class="mb-3" style="color: #f4f2ef;">Begining with the raw data in CSV format looked through the columns and data types to build an ERD for the structure of the database.</p>
+            <h2 class="text-2xl font-bold text-indigo-500 mb-5">Dataset</h2>
+            <img src="/Photos/openipf-data.png" alt="">
+            <br>
+            <p class="mb-3" style="color: #f4f2ef;">The original dataset has 42 columns that detail historical data of powerlifting competitions begining in 1966 and continuing to the present day. 
+                This data set comes with many interesting considerations that affect the chosen structure, such as the fact that a single lifter can be registered multiple times to a single competition as they can be in multiple divisions or compete with and without equipment. 
+                There are also many examples of lifters that have been registered to different competitions with a different sex over time. The amount and types of data vary significantly over time based on the federation that the data is coming from.</p>
+            <h2 class="text-2xl font-bold text-indigo-500 mb-5">ERD</h2>
+            <img src="/Photos/open-ipf-erd.png" alt="">
+            <br>
+            <p class="mb-3" style="color: #f4f2ef;">This ERD takes into account the many intricacies of this complex dataset. Many of the data points that I would have origionally thought woould exist in the lifter table are actually attributes of the lifter_meet table which records information about a lifters registration to a competition.
+                 The Sex of the lifter needed to placed in the lifter meet table as it can vary for a lifter between competitions.
+                 The lifter_table ended up with its own id rather than a composite as there would need to be about five attributes combined to reliably identify a single registrant. 
+                 age_class and birth_year class are very similar although they are used by different federations within the dataset.
+                 The birth_year_class assumes positions the participant in a category based on their maximum age for that year where as the age_class utilizes the actual age of the lifter on the day of competition.
+            </p>
+            <h2 class="text-2xl font-bold text-indigo-500 mb-5">Queries And Tuning</h2>
+            <p class="mb-3" style="color: #f4f2ef;">After transforming the data into the chosen structure and loading it into a Postgres database, several queries were built for this dataset to display its complexity and explore views and performance tuning.</p>
+
+        </div>
+    </section>
+    <section class="px-5 py-10 text-gray-400 bg-gray-800">
+        <div class="container mx-auto">
+            <h2 style="color: #f4f2ef;" class="text-3xl font-bold text-indigo-500 mb-3">Results</h2>
+            <div class="h-1 w-20 bg-indigo-500 rounded mb-6"></div> <!-- Header underline -->
+            <p style="color: #f4f2ef;">Using the above structure I was able to load the data into a Postgres database and create queries to show the data.</p>
+            <br>
+            <img src="/Photos/Screenshot_20240408_132038.png" alt="">
+            <br>
+            <p style="color: #f4f2ef;">This query shows the top ten companies with the most complaints in the dataset.</p>
+            <br>
+            <img src="/Photos/Screenshot_20240408_132322.png" alt="">
+            <br>
+            <p style="color: #f4f2ef;">This complaint shows the number of complaints filed in 2011</p>
+            <br>
+            <img src="/Photos/Screenshot_20240408_132823.png" alt="">
+            <br>
+            <p style="color: #f4f2ef;">This query shows the number of complaints per zipcode in the area of Manhattan. This query was used as an example of performance tuning with indexes.</p>
+            <br>
+            <img src="/Photos/Screenshot_20240408_132840.png" alt="">
+            <br>
+            <p style="color: #f4f2ef;">Looking at the query plan we can see that the additions of indexes for this query have reduced the execution time from 84.523ms to 5.934ms!</p>
+            <a href="/index.html" class="inline-block mt-5 text-indigo-500 hover:text-indigo-600">← Back to Portfolio</a>
+        </div>
+    </section>
+    <footer class="text-gray-600 body-font bg-gray-900">
+        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+            <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                <span style="color: #f4f2ef;" class="ml-3 text-xl">Alex Boyd</span>
+            </a>
+            <p style="color: #f4f2ef;" class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2024 Alex Boyd</p>
+        </div>
+    </footer>
+</body>
+</html>
