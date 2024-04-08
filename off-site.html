@@ -9,246 +9,81 @@
 <body class="bg-gray-900 text-gray-200">
     <section class="px-5 py-10 bg-gray-800">
         <div class="container mx-auto">
-            <h1 style="color: #f4f2ef;" class="text-4xl font-bold text-indigo-500 mb-4">U.S Consumer Finance Complaints Analysis</h1>
+            <h1 style="color: #f4f2ef;" class="text-4xl font-bold text-indigo-500 mb-4">Automating Off-Site Server Backup</h1>
             <div class="h-1 w-20 bg-indigo-500 rounded mb-6"></div> <!-- Header underline -->
-            <img src="photos/Screenshot_20240408_123536.png" alt="Project Image" class="rounded-lg mb-4">
-            <p class="mb-4" style="color: #f4f2ef;">An ETL Project using the U.S Consumer Finance Complaints dataset from Kaggle.</p>
+            <p style="color: #f4f2ef;">
+            Connecting two Ubuntu server VMs over the network to enable automated backups of databases.</p>
         </div>
     </section>
     <section class="px-5 py-10 text-gray-400 bg-gray-900">
         <div class="container mx-auto">
             <h2 style="color: #f4f2ef;" class="text-3xl font-bold text-indigo-500 mb-3">The Process</h2>
             <div class="h-1 w-20 bg-indigo-500 rounded mb-6"></div> <!-- Header underline -->
-            <p class="mb-3" style="color: #f4f2ef;">Begining with the raw data in CSV format looked through the columns and data types to build an ERD for the structure of the database.</p>
-            <h2 class="text-2xl font-bold text-indigo-500 mb-5">ERD</h2>
-            <img src="photos/Screenshot_20240408_124059.png" alt="">
+            <img src="photos/backup-1.png" alt="">
             <br>
-            <p class="mb-3" style="color: #f4f2ef;">This structure identified the main entities at play in the dataset. The structure of the product and issues tables are self refferencial using a parent ID to efficiently represent the heirarchical data stored in the sub_product and sub_issue columns.</p>
-            <h2 class="text-2xl font-bold text-indigo-500 mb-5">Data Dictionary</h2>
-            <!-- Issue Table -->
-            <h3 class="text-xl font-semibold mb-2" style="color: #f4f2ef;">Product Table</h3>
-            <table class="table-auto w-full mb-10">
-                <thead>
-                    <tr class="bg-gray-700 text-gray-200">
-                        <th>Field Name</th>
-                        <th>Data Type</th>
-                        <th>Description</th>
-                        <th>Required</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-400" style="color: #f4f2ef;">
-                    <tr>
-                        <td>product_id</td>
-                        <td>int4</td>
-                        <td>The primary key of the product table</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>product</td>
-                        <td>text</td>
-                        <td>The product description</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>parent_product_id</td>
-                        <td>int4</td>
-                        <td>The foreign key to the parent product for sub_products</td>
-                        <td>No</td>
-                    </tr>
-                </tbody>
-            </table>
-            <!-- Issue Table -->
-            <h3 class="text-xl font-semibold mb-2" style="color: #f4f2ef;">Issue Table</h3>
-            <table class="table-auto w-full mb-10">
-                <thead>
-                    <tr class="bg-gray-700 text-gray-200">
-                        <th>Field Name</th>
-                        <th>Data Type</th>
-                        <th>Description</th>
-                        <th>Required</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-400" style="color: #f4f2ef;">
-                    <tr>
-                        <td>issue_id</td>
-                        <td>int4</td>
-                        <td>The primary key of the issue table</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>issue</td>
-                        <td>text</td>
-                        <td>The issue description</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>parent_issue_id</td>
-                        <td>int4</td>
-                        <td>The foreign key to the parent issue for sub_issues</td>
-                        <td>No</td>
-                    </tr>
-                </tbody>
-            </table>
-            <!-- Company Table -->
-            <h3 class="text-xl font-semibold mb-2" style="color: #f4f2ef;">Company Table</h3>
-            <table class="table-auto w-full">
-                <thead>
-                    <tr class="bg-gray-700 text-gray-200">
-                        <th>Field Name</th>
-                        <th>Data Type</th>
-                        <th>Description</th>
-                        <th>Required</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-400" style="color: #f4f2ef;">
-                    <tr>
-                        <td>company_id</td>
-                        <td>int4</td>
-                        <td>The primary key of the company table</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>company</td>
-                        <td>text</td>
-                        <td>The name of the company</td>
-                        <td>Yes</td>
-                    </tr>
-                </tbody>
-            </table>
-            <!-- Complaint Table -->
+            <p style="color: #f4f2ef;">
+            Creating the script to backup all MySQL databases to a local directory
+            </p>
             <br>
-            <h3 class="text-xl font-semibold mb-2" style="color: #f4f2ef;">Complaint Table</h3>
-            <table class="table-auto w-full mb-10">
-                <thead>
-                    <tr class="bg-gray-700 text-gray-200">
-                        <th>Field Name</th>
-                        <th>Data Type</th>
-                        <th>Description</th>
-                        <th>Required</th>
-                    </tr>
-                </thead>
-                <tbody style="color: #f4f2ef;">
-                    <tr>
-                        <td>complaint_id</td>
-                        <td>int4</td>
-                        <td>The primary key of the complaint table</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>consumer_complaint_narrative</td>
-                        <td>text</td>
-                        <td>The detailed complaint filed by the consumer</td>
-                        <td>No</td>
-                    </tr>
-                    <tr>
-                        <td>company_public_response</td>
-                        <td>text</td>
-                        <td>The response from the company, for public view</td>
-                        <td>No</td>
-                    </tr>
-                    <tr>
-                        <td>submitted_via</td>
-                        <td>text</td>
-                        <td>The medium through which the complaint was submitted</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>date_received</td>
-                        <td>date</td>
-                        <td>The date and time the complaint was received</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>date_sent_to_company</td>
-                        <td>date</td>
-                        <td>The date and time the complaint was sent to the company</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>company_response_to_consumer</td>
-                        <td>text</td>
-                        <td>The response from the company to the consumer</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>timely_response</td>
-                        <td>bool</td>
-                        <td>Whether the company responded in a timely manner</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>consumer_disputed</td>
-                        <td>bool</td>
-                        <td>Whether the consumer disputed the response or not</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>complaint_state</td>
-                        <td>text</td>
-                        <td>The state from which the complaint was filed</td>
-                        <td>No</td>
-                    </tr>
-                    <tr>
-                        <td>complaint_zip</td>
-                        <td>int4</td>
-                        <td>The ZIP code from which the complaint was filed</td>
-                        <td>No</td>
-                    </tr>
-                    <tr>
-                        <td>complaint_tags</td>
-                        <td>text</td>
-                        <td>Tags related to the complaint</td>
-                        <td>No</td>
-                    </tr>
-                    <tr>
-                        <td>consumer_consent_provided</td>
-                        <td>text</td>
-                        <td>If the consumer provided consent for complaint share</td>
-                        <td>No</td>
-                    </tr>
-                    <tr>
-                        <td>issue_id</td>
-                        <td>int4</td>
-                        <td>The foreign key to the issue related to the complaint</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>product_id</td>
-                        <td>int4</td>
-                        <td>The foreign key to the product related to the complaint</td>
-                        <td>Yes</td>
-                    </tr>
-                    <tr>
-                        <td>company_id</td>
-                        <td>int4</td>
-                        <td>The foreign key to the company the complaint is against</td>
-                        <td>Yes</td>
-                    </tr>
-                </tbody>
-            </table>
+            <img src="photos/backup-2.png" alt="">
+            <br>
+            <p style="color: #f4f2ef;">
+            Making the script executable.
+            </p>
+            <br>
+            <img src="photos/backup-3.png" alt="">
+            <br>
+            <p style="color: #f4f2ef;">
+            Creating the Cron job to execute the script on a daily basis.
+            </p>
+            <br>
+            <img src="photos/backup-4.png" alt="">
+            <br>
+            <p style="color: #f4f2ef;">
+            Generating ssh keys to be used for secure connection between servers.
+            </p>
+            <br>
+            <img src="photos/backup-5.png" alt="">
+            <br>
+            <p style="color: #f4f2ef;">
+            Copying public key to backup server.
+            </p>
+            <br>
+            <img src="photos/backup-6.png" alt="">
+            <br>
+            <p style="color: #f4f2ef;">
+            Creating script to backup daily backups to remote server.
+            </p>
+            <br>
+            <img src="photos/backup-7.png" alt="">
+            <br>
+            <p style="color: #f4f2ef;">
+            Making script executable
+            </p>
+            <br>
+            <img src="photos/backup-8.png" alt="">
+            <br>
+            <p style="color: #f4f2ef;">
+            Adding Cron job to execute remote backup weekly.
+            </p>
+            <br>
         </div>
     </section>
     <section class="px-5 py-10 text-gray-400 bg-gray-800">
         <div class="container mx-auto">
             <h2 style="color: #f4f2ef;" class="text-3xl font-bold text-indigo-500 mb-3">Results</h2>
             <div class="h-1 w-20 bg-indigo-500 rounded mb-6"></div> <!-- Header underline -->
-            <p style="color: #f4f2ef;">Using the above structure I was able to load the data into a Postgres database and create queries to show the data.</p>
+            <img src="photos/backup-9.png" alt="">
             <br>
-            <img src="photos/Screenshot_20240408_132038.png" alt="">
+            <p style="color: #f4f2ef;">
+            Testing remote backup script.
+            </p>
             <br>
-            <p style="color: #f4f2ef;">This query shows the top ten companies with the most complaints in the dataset.</p>
+            <img src="photos/backup-10.png" alt="">
             <br>
-            <img src="photos/Screenshot_20240408_132322.png" alt="">
-            <br>
-            <p style="color: #f4f2ef;">This complaint shows the number of complaints filed in 2011</p>
-            <br>
-            <img src="photos/Screenshot_20240408_132823.png" alt="">
-            <br>
-            <p style="color: #f4f2ef;">This query shows the number of complaints per zipcode in the area of Manhattan. This query was used as an example of performance tuning with indexes.</p>
-            <br>
-            <img src="photos/Screenshot_20240408_132840.png" alt="">
-            <br>
-            <p style="color: #f4f2ef;">Looking at the query plan we can see that the additions of indexes for this query have reduced the execution time from 84.523ms to 5.934ms!</p>
+            <p style="color: #f4f2ef;">
+            Showing files on backup server
+            </p>
             <a href="https://boyda-dba.github.io/Boyda_DBA.github.io/" class="inline-block mt-5 text-indigo-500 hover:text-indigo-600">← Back to Portfolio</a>
         </div>
     </section>
